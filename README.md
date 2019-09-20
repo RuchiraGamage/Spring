@@ -1,2 +1,2 @@
-# Spring RestApi
+# Spring RestAPI
 Spring boot application development
