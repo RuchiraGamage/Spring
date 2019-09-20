@@ -30,13 +30,13 @@ public class CourseController {
 
     //here post we get jason payload from request body and spring pass it in to Topic object which we needed
     @RequestMapping(method = RequestMethod.POST,value = "/topics/{topicId}/courses")
-    public void addCourse(@RequestBody Course course,@RequestBody int topicId){
+    public void addCourse(@RequestBody Course course,@PathVariable int topicId){
         course.setTopic(new Topic(topicId,"",""));
         courseService.addCourse(course);
     }
 
     @RequestMapping(method = RequestMethod.PUT,value = "/topics/{topicId}/courses/{id}")
-    public void updateCourse(@RequestBody Course course,@RequestBody int topicId, @PathVariable int id){
+    public void updateCourse(@RequestBody Course course,@PathVariable int topicId, @PathVariable int id){
         course.setTopic(new Topic(topicId,"",""));
         courseService.updateCourse(course);
     }
