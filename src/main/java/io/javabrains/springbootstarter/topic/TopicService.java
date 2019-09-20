@@ -1,5 +1,7 @@
 package io.javabrains.springbootstarter.topic;
 
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.TopLevelAttribute;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -12,38 +14,36 @@ import java.util.List;
 @Service
 public class TopicService {
 
-    private List<Topic> topics= new ArrayList<Topic>( Arrays.asList(
-            new Topic(1,"1st topic","Spring discription"),
-            new Topic(2,"2nd topic","Spring controllers"),
-            new Topic(3,"3st topic","Spring request mapping"),
-            new Topic(4,"4st topic","Spring application"),
-            new Topic(5,"5st topic","Spring serverlet")
-    ));
+    @Autowired
+    private TopicRepository topicRepository;
 
 
-    public List<Topic> getAllTopic(){
+    public List<Topic> getAllTopic()
+    {
+        List<Topic> topics=new ArrayList<Topic>();
+        topicRepository.findAll()
+                .forEach(topics::add);
+
         return topics;
     }
 
     public Topic getTopic(int id){
 
-        return topics.stream().filter(t->t.getId()==id).findFirst().get();
+        //return topics.stream().filter(t->t.getId()==id).findFirst().get();
+        return topicRepository.findOne(id);
     }
 
     public void addTopic(Topic topic) {
-        topics.add(topic);
+        topicRepository.save(topic);
     }
 
     public void updateTopic(Topic topic, int id) {
-        for (int i = 0; i <topics.size() ; i++) {
-            if (topics.get(i).getId()==id){
-                topics.set(i,topic);
-            }
-        }
 
+        topicRepository.save(topic);
     }
 
     public void deleteTopic(int id) {
-       topics.removeIf(t->t.getId()==id);
+      // topics.removeIf(t->t.getId()==id);
+        topicRepository.delete(id);
     }
 }
