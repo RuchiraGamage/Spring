@@ -8,17 +8,29 @@
     <artifactId>Course API</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!--this parent configuration inherit our child configuraion here CourseApi
+    this parent project is done by maven so any project can inherit it and use that configurations
+    it inherit all spring boot configurations-->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.2.4.RELEASE</version>
     </parent>
-
+    <!--all dependancies for rest API is added to this-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId><!--this is the dependancy we including which add all the web related jar-->
         </dependency>
+
+        <!-- The spring-webmvc module (also known as the Web-Servlet module) contains
+			Spring’s model-view-controller (MVC) and REST Web Services implementation
+			for web applications -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
     </dependencies>
     <properties>
         <java.version>1.8</java.version>
