@@ -1,32 +1,29 @@
-package io.javabrains.springbootstarter.course.topic;
+package io.javabrains.springbootstarter.subject;
 
-import io.javabrains.springbootstarter.topic.Topic;
+import io.javabrains.springbootstarter.course.Course;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+/**
+ * Created by Ruchira on 9/21/2019.
+ */
 @Entity
-public class Course {
+public class Subject {
     @Id
     private int id;
     private String name;
     private String discription;
 
     @ManyToOne
-    private Topic topic;
+    private Course course;
 
-    public Course() {
-
-    }
-
-    public Course(int id, String name, String discription,int topicId) {
-        super();
+    public Subject(int id, String name, String discription, int courseId,int topicId) {
         this.id = id;
         this.name = name;
         this.discription = discription;
-        topic=new Topic(topicId,"","");
+        this.course = new Course(courseId,"","",topicId);
     }
 
     public int getId() {
@@ -53,11 +50,11 @@ public class Course {
         this.discription = discription;
     }
 
-    public Topic getTopic() {
-        return topic;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setTopic(Topic topic) {
-        this.topic = topic;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

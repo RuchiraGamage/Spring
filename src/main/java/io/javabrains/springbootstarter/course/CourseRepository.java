@@ -1,4 +1,4 @@
-package io.javabrains.springbootstarter.course.topic;
+package io.javabrains.springbootstarter.course;
 
 import org.springframework.data.repository.CrudRepository;
 

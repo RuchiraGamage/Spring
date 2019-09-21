@@ -1,4 +1,4 @@
-package io.javabrains.springbootstarter.course.topic;
+package io.javabrains.springbootstarter.course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
